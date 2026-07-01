@@ -3,24 +3,25 @@
 
 def attendance():
     month=input("Enter the month: ")
-    if month.lower() ==["january" or "march" or "may" or "july" or "august" or "october" or "december"]:
+    if month.lower() in ["january", "march", "may", "july", "august", "october", "december"]:
         days=31
-    elif month =="february":
+    elif month.lower() =="february":
         days=28
-    elif month.lower() ==["april" or "june" or "september" or "november"]:
+    elif month.lower() in ["april", "june", "september", "november"]:
         days=30
     else:
-        return "Invalid month name"
-    
-    list=[]
+        print("Invalid month name")
+        exit()
+
+    attendance_list=[]
 
     for i in range(1,days+1):
         status=input(f"Enter attendance for day {i} (P/A): ")
-        list.append(status.upper())
+        attendance_list.append(status.upper())
 
-    present=list.count("P")
-    attendance_percentage=(present/days)*100
+    present=attendance_list.count("P")
+    attendance_percentage=f"{(present/days)*100:.2f}"
     return attendance_percentage
 
 
-print(f"Attendance Percentage: {attendance()}%")
+print(f"Attendance Percentage is :- {attendance()}%")
